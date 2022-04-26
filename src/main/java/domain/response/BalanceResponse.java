@@ -2,17 +2,16 @@ package domain.response;
 
 import domain.Bank;
 import domain.Borrower;
-import domain.commands.BankingCommand;
 
-import static domain.commands.BankingCommand.BALANCE;
+import static domain.request.BankingCommand.BALANCE;
 
 public class BalanceResponse extends CommandResponseLike {
     private final Bank bank;
     private final Borrower borrower;
-    private final double amountPaid;
+    private final long amountPaid;
     private final int numberOfRemainingEMIs;
 
-    public BalanceResponse(Bank bank, Borrower borrower, double amountPaid, int numberOfRemainingEMIs) {
+    public BalanceResponse(Bank bank, Borrower borrower, long amountPaid, int numberOfRemainingEMIs) {
         this.bank = bank;
         this.borrower = borrower;
         this.amountPaid = amountPaid;
@@ -34,5 +33,10 @@ public class BalanceResponse extends CommandResponseLike {
 
     public int getNumberOfRemainingEMIs() {
         return numberOfRemainingEMIs;
+    }
+
+    @Override
+    public void displayResult() {
+        System.out.println(bank.getName() + " " + borrower.getName() + " " + amountPaid + " " + numberOfRemainingEMIs);
     }
 }

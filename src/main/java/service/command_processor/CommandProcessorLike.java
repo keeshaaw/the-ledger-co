@@ -1,6 +1,6 @@
 package service.command_processor;
 
-import domain.commands.QualifiedBankingTransactionCommandLike;
+import domain.request.QualifiedBankingTransactionCommandLike;
 import domain.exceptions.DuplicateLoanRecordException;
 import domain.exceptions.LoanRecordNotFoundException;
 import domain.response.CommandResponseLike;
@@ -10,6 +10,7 @@ public abstract class CommandProcessorLike<C extends QualifiedBankingTransaction
         R extends CommandResponseLike> {
 
     protected LoanRepositoryLike loanRepo;
+    protected C command;
 
-    public abstract R processCommand(C command) throws DuplicateLoanRecordException, LoanRecordNotFoundException;
+    public abstract R processCommand() throws DuplicateLoanRecordException, LoanRecordNotFoundException;
 }

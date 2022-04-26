@@ -14,7 +14,22 @@ import java.util.Objects;
 
 public class InMemoryLoanRepository implements LoanRepositoryLike {
 
+    private static volatile InMemoryLoanRepository INSTANCE = null;
+
     private Map<SyntheticLoanId, LoanRecord> underlyingLoanRepo = new HashMap<>();
+
+    private InMemoryLoanRepository() {
+    }
+
+    public static InMemoryLoanRepository getInstance() {
+        if (INSTANCE == null) {
+            synchronized (InMemoryLoanRepository.class) {
+                if (INSTANCE == null)
+                    INSTANCE = new InMemoryLoanRepository();
+            }
+        }
+        return INSTANCE;
+    }
 
     @Override
     public LoanRecord getLoanRecord(Bank bank, Borrower borrower) throws LoanRecordNotFoundException {

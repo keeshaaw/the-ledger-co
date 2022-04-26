@@ -1,21 +1,11 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import service.RequestProcessorService;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        if(args.length == 0) {
+            throw new Exception("The file path is not provided in the arguments");
+        }
         String filePath = args[0];
-
-        List<String> requestedCommands = null;
-        try {
-            requestedCommands = Files.readAllLines(Paths.get(filePath));
-        } catch (IOException exception) {
-            System.out.println("[ERROR] Could not find any file at path: " + filePath);
-        }
-
-        if(requestedCommands != null) {
-
-        }
+        new RequestProcessorService(filePath).processRequest();
     }
 }

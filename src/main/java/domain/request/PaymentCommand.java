@@ -1,14 +1,14 @@
-package domain.commands;
+package domain.request;
 
 import domain.Bank;
 import domain.Borrower;
 
 public class PaymentCommand extends QualifiedBankingTransactionCommandLike {
 
-    protected Double lumpSumAmountPaid;
+    protected double lumpSumAmountPaid;
     protected int emiNumber;
 
-    public PaymentCommand(Bank bank, Borrower borrower, Double lumpSumAmountPaid, int emiNumber) {
+    public PaymentCommand(Bank bank, Borrower borrower, double lumpSumAmountPaid, int emiNumber) {
         this.command = BankingCommand.PAYMENT;
         this.bank = bank;
         this.borrower = borrower;
@@ -16,7 +16,7 @@ public class PaymentCommand extends QualifiedBankingTransactionCommandLike {
         this.emiNumber = emiNumber;
     }
 
-    public Double getLumpSumAmountPaid() {
+    public double getLumpSumAmountPaid() {
         return lumpSumAmountPaid;
     }
 

@@ -1,4 +1,4 @@
-package domain.commands;
+package domain.request;
 
 public enum BankingCommand {
     LOAN,

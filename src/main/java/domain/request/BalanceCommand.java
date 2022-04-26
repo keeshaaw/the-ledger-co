@@ -1,4 +1,4 @@
-package domain.commands;
+package domain.request;
 
 import domain.Bank;
 import domain.Borrower;
